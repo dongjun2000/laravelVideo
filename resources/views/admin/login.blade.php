@@ -14,6 +14,11 @@
 </nav>
 
 <div class="col-md-4 offset-md-4 mt-5">
+
+    @include('admin.layouts._error')
+
+    @include('admin.layouts._message')
+
     <form action="{{ route('admin.login') }}" method="post">
         @csrf
         <div class="card">
@@ -22,7 +27,7 @@
                 <div class="form-group">
                     <label for="username">账号：</label>
                     <input type="text"
-                           class="form-control" name="username" id="username" name="{{old('username')}}">
+                           class="form-control" name="username" id="username" value="{{ old('username') }}">
                 </div>
                 <div class="form-group">
                     <label for="password">密码：</label>
@@ -37,5 +42,14 @@
     </form>
 </div>
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script>
+    if ($('.alert').length > 0) {
+        setTimeout(function() {
+            $(".alert").alert('close');
+        }, 3000);
+    }
+</script>
+
 </body>
 </html>

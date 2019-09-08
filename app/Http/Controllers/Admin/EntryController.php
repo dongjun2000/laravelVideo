@@ -27,9 +27,15 @@ class EntryController extends Controller
      *
      * @param Request $request
      * @return $this|\Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
     public function login(Request $request)
     {
+        $this->validate($request, [
+            'username' => 'required',
+            'password' => 'required',
+        ]);
+
         $data = $request->only('username', 'password');
 
         if ($this->guard()->attempt($data)) {
@@ -37,8 +43,7 @@ class EntryController extends Controller
             return redirect()->intended($this->redirectPath());
         }
 
-        session()->flash('error', '用户名或密码错误');
-        return back()->withInput();
+        return back()->withInput()->with('danger', '用户名或密码错误!');
     }
 
     /**
