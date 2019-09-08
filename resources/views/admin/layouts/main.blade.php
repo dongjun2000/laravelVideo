@@ -61,15 +61,59 @@
 <div class="container-fluid mt-3">
     <div class="row">
         <div class="col-2">
-            <ul class="nav nav-pills flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" data-toggle="tab" aria-selected="true">首页</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#collapseExample" data-toggle="collapse" data-toggle="tab"
-                       aria-selected="false">产品管理</a>
-                </li>
-            </ul>
+            {{--<ul class="nav nav-pills flex-column">--}}
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link active" href="#">系统管理</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="#collapseExample">内容管理</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                系统管理
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                        <div class="card-item">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="">系统设置</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="">修改信息</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                内容管理
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-item">
+                            <ul class="list-group">
+                                <li class="list-group-item">
+                                    <a href="">标签管理</a>
+                                </li>
+                                <li class="list-group-item">
+                                    <a href="">视频管理</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div id="app" class="col-10">
