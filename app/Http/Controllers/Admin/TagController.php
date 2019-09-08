@@ -55,26 +55,29 @@ class TagController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * 编辑标签的页面
      *
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tag.edit', compact('tag'));
     }
 
     /**
-     * Update the specified resource in storage.
+     * 保存标签的修改
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagStoreRequest $request, Tag $tag)
     {
-        //
+        $tag->name = $request->get('name');
+        $tag->save();
+
+        return redirect()->route('admin.tag.index')->with('success', '修改成功！');
     }
 
     /**
