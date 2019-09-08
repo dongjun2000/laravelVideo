@@ -15,7 +15,10 @@ class MeController extends Controller
 
     public function update(MeUpdateReuqest $request)
     {
-
-        dd($request->all());
+        $user = \Auth::guard('admin')->user();
+        $user->nickname = $request->get('nickname');
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+        return back()->with('success', '更新成功！');
     }
 }
