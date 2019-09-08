@@ -16,6 +16,16 @@ class MeUpdateReuqest extends FormRequest
         return true;
     }
 
+    /**
+     * 添加验证规则
+     */
+    public function addValidator()
+    {
+        // 验证用户密码
+        \Validator::extend('check_password', function($attribute, $value, $parameters, $validator) {
+            return \Hash::check($value, \Auth::guard('admin')->user()->password);
+        });
+    }
 
     /**
      * Get the validation rules that apply to the request.
@@ -24,10 +34,19 @@ class MeUpdateReuqest extends FormRequest
      */
     public function rules()
     {
+        $this->addValidator();
+
         return [
             'nickname'     => 'required|min:2|max:20',
-            'old_password' => 'required',
+            'old_password' => 'required|check_password',
             'password'     => 'required|confirmed'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'old_password.check_password' => '原密码错误！',
         ];
     }
 
