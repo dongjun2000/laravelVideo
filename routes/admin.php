@@ -12,4 +12,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     // 退出登录
     Route::get('logout', 'EntryController@logout')->name('logout');
 
+    // 个人信息
+    Route::get('me', 'MeController@show')->name('me');
+    Route::post('me', 'MeController@update')->name('me');
 });
