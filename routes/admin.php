@@ -15,4 +15,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
     // 个人信息
     Route::get('me', 'MeController@show')->name('me');
     Route::post('me', 'MeController@update')->name('me');
+
+    // 标签
+    Route::resource('tag', 'TagController');
 });
