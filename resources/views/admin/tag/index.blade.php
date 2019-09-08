@@ -31,8 +31,11 @@
                         <td>{{ $tag->name }}</td>
                         <td>
                             <div class="btn-group">
-                                <a name="" id="" class="btn btn-success" href="#" role="button">修改</a>
-                                <a name="" id="" class="btn btn-danger" href="#" role="button">删除</a>
+                                <a class="btn btn-success" href="{{ route('admin.tag.edit', $tag) }}">修改</a>
+                                <form action="{{ route('admin.tag.destroy', $tag) }}" method="post" onsubmit="return confirm('确认要删除吗？')">
+                                    @csrf @method('DELETE')
+                                <button type="submit" class="btn btn-danger">删除</button>
+                                </form>
                             </div>
                         </td>
                     </tr>

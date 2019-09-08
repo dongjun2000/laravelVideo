@@ -31,10 +31,10 @@ class TagController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 添加标签
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param TagStoreRequest $request
+     * @return $this
      */
     public function store(TagStoreRequest $request)
     {
@@ -78,13 +78,16 @@ class TagController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * 删除标签
      *
-     * @param  \App\Tag  $tag
-     * @return \Illuminate\Http\Response
+     * @param Tag $tag
+     * @return $this
+     * @throws \Exception
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return back()->with('success', '删除成功！');
     }
 }
