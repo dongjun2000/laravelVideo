@@ -7,6 +7,13 @@ use App\Http\Controllers\Controller;
 
 class EntryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin.auth')->except([
+            'login', 'loginForm'
+        ]);
+    }
+
     public function redirectPath()
     {
         return route('admin.home');
