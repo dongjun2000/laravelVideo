@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\MeUpdateReuqest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
-class MeController extends Controller
+class MeController extends CommonController
 {
     public function show()
     {
