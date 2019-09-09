@@ -18,4 +18,7 @@ Route::prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
 
     // 标签
     Route::resource('tag', 'TagController');
+
+    // 课程
+    Route::resource('lesson', 'LessonController');
 });

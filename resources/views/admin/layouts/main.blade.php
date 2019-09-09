@@ -102,7 +102,7 @@
                                     <a href="{{ route('admin.tag.index') }}">标签管理</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="">视频管理</a>
+                                    <a href="{{ route('admin.lesson.index') }}">视频管理</a>
                                 </li>
                             </ul>
                         </div>
